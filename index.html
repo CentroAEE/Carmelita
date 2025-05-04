@@ -2,27 +2,42 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AEE Carmelita Joana dos Santos Menezes - Início</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AEE Carmelita Joana dos Santos Menezes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* === Estilos Globais Mobile-First === */
+        /* === Variáveis de Design === */
         :root {
-            --apple-background-alt: #f5f5f7;
-            --apple-border-color: #d2d2d7;
-            --apple-gray-text: #1d1d1f;
-            --apple-gray-text-light: #86868b;
-            --apple-blue: #0066cc;
+            --primary-color: #0066cc;
+            --secondary-color: #5ac8fa;
+            --text-dark: #1d1d1f;
+            --text-light: #86868b;
+            --bg-light: #f5f5f7;
+            --bg-white: #ffffff;
+            --border-radius: 18px;
+            --dock-height: 70px;
+            --safe-area: env(safe-area-inset-bottom);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* === Reset e Base === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--apple-gray-text);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            padding-bottom: calc(var(--dock-height) + var(--safe-area));
+            overflow-x: hidden;
         }
 
         .container {
@@ -30,25 +45,22 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            box-sizing: border-box;
         }
 
-        /* === Header e Menu Mobile === */
+        /* === Header Desktop === */
         .main-header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 100;
-            width: 100%;
+            z-index: 1000;
         }
 
-        .main-nav {
+        .desktop-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-            position: relative;
         }
 
         .logo-img {
@@ -56,195 +68,270 @@
             width: auto;
         }
 
-        /* Menu Hamburguer - Corrigido para Chrome em tela dividida */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 101;
-        }
-
-        .hamburger {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: var(--apple-gray-text);
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .hamburger::before, .hamburger::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            left: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .hamburger::before { top: -8px; transform-origin: left center; }
-        .hamburger::after { bottom: -8px; transform-origin: left center; }
-
-        .nav-menu {
+        .desktop-menu {
             display: flex;
             list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 20px;
+            gap: 25px;
         }
 
-        .nav-menu li a {
+        .desktop-menu li a {
             text-decoration: none;
-            color: var(--apple-gray-text);
+            color: var(--text-dark);
             font-weight: 500;
-            padding: 5px 0;
-            transition: color 0.3s;
-            white-space: nowrap;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
         }
 
-        .nav-menu li a:hover, .nav-menu li a.active {
-            color: var(--apple-blue);
+        .desktop-menu li a:hover,
+        .desktop-menu li a.active {
+            color: var(--primary-color);
         }
 
-        /* === Hero Section === */
+        .desktop-menu li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        /* === Dock Menu Mobile === */
+        .mobile-dock {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: calc(var(--dock-height) + var(--safe-area));
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+            padding-bottom: var(--safe-area);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dock-items {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 500px;
+            padding: 0 15px;
+        }
+
+        .dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: var(--transition);
+            flex: 1;
+            max-width: 80px;
+        }
+
+        .dock-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            position: relative;
+        }
+
+        .dock-icon i {
+            font-size: 22px;
+            transition: var(--transition);
+        }
+
+        .dock-item.active .dock-icon i {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .dock-label {
+            font-size: 10px;
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .dock-item.active .dock-label {
+            color: var(--primary-color);
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        /* Efeito de destaque no item ativo */
+        .dock-item.active .dock-icon::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* === Conteúdo Principal === */
+        main {
+            min-height: calc(100vh - var(--dock-height) - var(--safe-area));
+            padding-top: 20px;
+        }
+
         .hero-section {
             text-align: center;
-            padding: 60px 0;
-            background-color: var(--apple-background-alt);
+            padding: 40px 0 60px;
+            background-color: var(--bg-white);
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
         }
 
         .hero-section h1 {
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 15px;
+            line-height: 1.2;
         }
 
         .hero-section p {
-            font-size: 1rem;
-            color: var(--apple-gray-text-light);
-            max-width: 90%;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            color: var(--text-light);
+            max-width: 600px;
             margin: 0 auto 30px;
+            line-height: 1.5;
         }
 
         .hero-button {
-            background-color: var(--apple-blue);
+            background-color: var(--primary-color);
             color: white;
-            padding: 15px 30px;
-            border-radius: 15px;
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
             text-decoration: none;
             font-size: 1rem;
             font-weight: 500;
             display: inline-block;
-            min-width: 120px;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
         }
 
         .hero-button:hover {
             background-color: #0052a3;
+            transform: translateY(-2px);
         }
 
-        /* === Features Section === */
         .features-section {
-            padding: 40px 0;
+            padding: 30px 0;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            text-align: center;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .feature-item {
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            background-color: var(--bg-white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
         }
 
         .feature-item h3 {
             font-size: 1.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.5;
         }
 
         /* === Footer === */
         .main-footer {
-            background-color: var(--apple-gray-text);
+            background-color: var(--text-dark);
             color: white;
             text-align: center;
             padding: 30px 0;
-            font-size: 0.9rem;
+            margin-top: 40px;
         }
 
         .main-footer p {
-            margin: 10px 0;
+            margin: 8px 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        /* === Media Queries (Tablet/Desktop) === */
-        @media (min-width: 768px) {
-            .hero-section h1 { font-size: 3rem; }
-            .hero-section p { font-size: 1.2rem; }
-            .features-section { grid-template-columns: repeat(3, 1fr); }
-            .menu-toggle { display: none; }
-            .nav-menu { display: flex !important; }
-        }
-
-        /* === Media Queries (Mobile) === */
-        @media (max-width: 767px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-menu {
+        /* === Media Queries === */
+        @media (max-width: 1023px) {
+            .desktop-nav {
                 display: none;
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                z-index: 100;
-                max-height: calc(100vh - 80px);
-                overflow-y: auto;
             }
-            .nav-menu.active {
-                display: flex;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-dock {
+                display: none;
             }
-            .nav-menu li {
-                margin: 10px 0;
-                text-align: center;
+            body {
+                padding-bottom: 0;
             }
-            /* Animação do hambúrguer */
-            .menu-toggle.active .hamburger {
-                transform: rotate(45deg);
+        }
+
+        /* Ajustes para tablets */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .dock-items {
+                max-width: 600px;
             }
-            .menu-toggle.active .hamburger::before {
-                transform: rotate(90deg) translateX(-8px);
+            .dock-item {
+                max-width: 100px;
             }
-            .menu-toggle.active .hamburger::after {
-                opacity: 0;
+            .dock-icon i {
+                font-size: 24px;
+            }
+            .dock-label {
+                font-size: 11px;
+            }
+        }
+
+        /* Suporte para dispositivos com notch */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            .mobile-dock {
+                padding-bottom: env(safe-area-inset-bottom);
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header Desktop -->
     <header class="main-header">
-        <nav class="main-nav container">
+        <nav class="desktop-nav container">
             <a href="index.html" class="logo-link">
                 <img src="images/logo.avif" alt="Logomarca AEE" class="logo-img">
             </a>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
-                <span class="hamburger"></span>
-            </button>
-            <ul class="nav-menu" id="nav-menu">
+            <ul class="desktop-menu">
                 <li><a href="index.html" class="active">Início</a></li>
                 <li><a href="pages/institucional.html">Institucional</a></li>
                 <li><a href="pages/servicos.html">Serviços</a></li>
                 <li><a href="pages/pais_alunos.html">Pais e Alunos</a></li>
-                <li><a href="pages/diario.html">Diário da Inclusão</a></li>
+                <li><a href="pages/diario.html">Diário</a></li>
                 <li><a href="pages/noticias.html">Notícias</a></li>
-                <li><a href="pages/legislacao.html">Legislação</a></li>
                 <li><a href="pages/contato.html">Contato</a></li>
             </ul>
         </nav>
@@ -261,57 +348,119 @@
 
         <section class="features-section container">
             <div class="feature-item">
-                <h3>Atendimento Especializado</h3>
-                <p>Suporte individualizado para necessidades educacionais específicas.</p>
+                <h3><i class="fas fa-user-graduate"></i> Atendimento Especializado</h3>
+                <p>Suporte individualizado para necessidades educacionais específicas com profissionais qualificados.</p>
             </div>
             <div class="feature-item">
-                <h3>Equipe Qualificada</h3>
-                <p>Profissionais experientes em educação inclusiva.</p>
+                <h3><i class="fas fa-users"></i> Equipe Qualificada</h3>
+                <p>Profissionais experientes em educação inclusiva com formação continuada.</p>
             </div>
             <div class="feature-item">
-                <h3>Recursos Adaptados</h3>
-                <p>Materiais pedagógicos e informações para pais e educadores.</p>
+                <h3><i class="fas fa-book-open"></i> Recursos Adaptados</h3>
+                <p>Materiais pedagógicos especializados e informações atualizadas para pais e educadores.</p>
             </div>
         </section>
     </main>
 
+    <!-- Dock Menu Mobile -->
+    <nav class="mobile-dock">
+        <div class="dock-items">
+            <a href="index.html" class="dock-item active">
+                <div class="dock-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span class="dock-label">Início</span>
+            </a>
+            <a href="pages/servicos.html" class="dock-item">
+                <div class="dock-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <span class="dock-label">Serviços</span>
+            </a>
+            <a href="pages/diario.html" class="dock-item">
+                <div class="dock-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <span class="dock-label">Diário</span>
+            </a>
+            <a href="pages/contato.html" class="dock-item">
+                <div class="dock-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <span class="dock-label">Contato</span>
+            </a>
+        </div>
+    </nav>
+
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes.</p>
+            <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes</p>
             <p>Endereço: Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA</p>
             <p>Telefone: (75) 99999-9999 | Email: contato@centroaee.edu.br</p>
         </div>
     </footer>
 
     <script>
-        // Menu Mobile - Corrigido para Chrome em tela dividida
-        const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+        // Sistema de navegação com armazenamento local
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ativar item do dock conforme a página atual
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const dockItems = document.querySelectorAll('.dock-item');
             
-            // Bloqueia/desbloqueia o scroll da página
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
+            dockItems.forEach(item => {
+                item.classList.remove('active');
+                const link = item.getAttribute('href');
+                if (currentPage.includes(link.split('/').pop())) {
+                    item.classList.add('active');
+                }
+            });
 
-        // Fechar menu ao clicar em um link ou fora do menu
-        document.addEventListener('click', (event) => {
-            const isClickInsideMenu = navMenu.contains(event.target) || menuToggle.contains(event.target);
-            if (!isClickInsideMenu && navMenu.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+            // Suporte para swipe no dock (opcional)
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const dock = document.querySelector('.mobile-dock');
+
+            dock.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+
+            dock.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+
+            function handleSwipe() {
+                const threshold = 50;
+                if (touchEndX < touchStartX - threshold) {
+                    // Swipe left
+                    navigateDock(1);
+                }
+                if (touchEndX > touchStartX + threshold) {
+                    // Swipe right
+                    navigateDock(-1);
+                }
             }
-        });
 
-        // Fechar menu ao redimensionar a tela (para casos de tela dividida)
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 767 && navMenu.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+            function navigateDock(direction) {
+                const activeItem = document.querySelector('.dock-item.active');
+                const items = Array.from(document.querySelectorAll('.dock-item'));
+                const currentIndex = items.indexOf(activeItem);
+                const nextIndex = (currentIndex + direction + items.length) % items.length;
+                
+                if (nextIndex !== currentIndex) {
+                    window.location.href = items[nextIndex].getAttribute('href');
+                }
+            }
+
+            // Preload de páginas para melhor performance
+            if ('connection' in navigator && navigator.connection.saveData) {
+                console.log('Modo save-data ativado - preload desabilitado');
+            } else {
+                const links = document.querySelectorAll('.dock-item:not(.active)');
+                links.forEach(link => {
+                    const url = link.getAttribute('href');
+                    fetch(url, {method: 'HEAD'});
+                });
             }
         });
     </script>
