@@ -2,78 +2,210 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AEE Carmelita Joana dos Santos Menezes - Início</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos específicos para a página inicial - Tema Apple */
-        .hero-section {
-            text-align: center;
-            padding: 80px 0;
-            background-color: var(--apple-background-alt);
-            border-bottom: 1px solid var(--apple-border-color);
+        /* === Estilos Globais Mobile-First === */
+        :root {
+            --apple-background-alt: #f5f5f7;
+            --apple-border-color: #d2d2d7;
+            --apple-gray-text: #1d1d1f;
+            --apple-gray-text-light: #86868b;
+            --apple-blue: #0066cc;
         }
-        .hero-section h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
             color: var(--apple-gray-text);
         }
-        .hero-section p {
-            font-size: 1.2rem;
-            color: var(--apple-gray-text-light);
-            max-width: 600px;
-            margin: 0 auto 30px auto;
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
+
+        /* === Header e Menu Mobile === */
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--apple-gray-text);
+            position: relative;
+        }
+
+        .hamburger::before, .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            left: 0;
+        }
+
+        .hamburger::before { top: -8px; }
+        .hamburger::after { bottom: -8px; }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: var(--apple-gray-text);
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-menu li a:hover, .nav-menu li a.active {
+            color: var(--apple-blue);
+        }
+
+        /* === Hero Section (Mobile Otimizado) === */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            background-color: var(--apple-background-alt);
+        }
+
+        .hero-section h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 1rem;
+            color: var(--apple-gray-text-light);
+            max-width: 90%;
+            margin: 0 auto 30px;
+        }
+
         .hero-button {
             background-color: var(--apple-blue);
             color: white;
-            padding: 12px 25px;
+            padding: 15px 30px;
             border-radius: 15px;
             text-decoration: none;
             font-size: 1rem;
             font-weight: 500;
-            transition: background-color 0.3s ease;
+            display: inline-block;
+            min-width: 120px;
         }
-        .hero-button:hover {
-            background-color: #0077ed;
-        }
+
+        /* === Features Section (Grid Responsivo) === */
         .features-section {
-            padding: 60px 0;
+            padding: 40px 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 30px;
             text-align: center;
         }
+
         .feature-item {
             padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
+
         .feature-item h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.2rem;
             margin-bottom: 10px;
-            color: var(--apple-gray-text);
         }
-        .feature-item p {
-            font-size: 0.95rem;
-            color: var(--apple-gray-text-light);
+
+        /* === Footer === */
+        .main-footer {
+            background-color: var(--apple-gray-text);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
         }
-        /* Ícones podem ser adicionados aqui */
+
+        .main-footer p {
+            margin: 10px 0;
+        }
+
+        /* === Media Queries (Tablet/Desktop) === */
+        @media (min-width: 768px) {
+            .hero-section h1 { font-size: 3rem; }
+            .hero-section p { font-size: 1.2rem; }
+            .features-section { grid-template-columns: repeat(3, 1fr); }
+            .menu-toggle { display: none; }
+            .nav-menu { display: flex !important; }
+        }
+
+        /* === Media Queries (Mobile) === */
+        @media (max-width: 767px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            .nav-menu.active { display: flex; }
+            .nav-menu li { margin: 10px 0; }
+        }
     </style>
 </head>
 <body>
     <header class="main-header">
         <nav class="main-nav container">
             <a href="index.html" class="logo-link">
-                <img src="images/logo.avif" alt="Logomarca AEE Carmelita Joana dos Santos Menezes" class="logo-img">
+                <img src="images/logo.avif" alt="Logomarca AEE" class="logo-img">
             </a>
-            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
                 <span class="hamburger"></span>
             </button>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html" class="active">Início</a></li>
                 <li><a href="pages/institucional.html">Institucional</a></li>
                 <li><a href="pages/servicos.html">Serviços</a></li>
@@ -81,8 +213,7 @@
                 <li><a href="pages/diario.html">Diário da Inclusão</a></li>
                 <li><a href="pages/noticias.html">Notícias</a></li>
                 <li><a href="pages/legislacao.html">Legislação</a></li>
-                <li><a href="pages/contato.html">Contacto</a></li>
-                <!-- <li><a href="pages/login.html" class="login-button">Entrar</a></li> -->
+                <li><a href="pages/contato.html">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -90,41 +221,50 @@
     <main>
         <section class="hero-section">
             <div class="container">
-                <h1>Bem-vindo ao Centro AEE</h1>
-                <p>Promovendo a inclusão e o desenvolvimento educacional especializado em Cícero Dantas/BA.</p>
-                <a href="pages/institucional.html" class="hero-button">Saiba Mais Sobre Nós</a>
+                <h1>Centro AEE Carmelita Joana dos Santos Menezes</h1>
+                <p>Educação inclusiva e atendimento especializado para alunos de Cícero Dantas e região.</p>
+                <a href="pages/institucional.html" class="hero-button">Saiba Mais</a>
             </div>
         </section>
 
         <section class="features-section container">
             <div class="feature-item">
-                <!-- Ícone aqui -->
                 <h3>Atendimento Especializado</h3>
-                <p>Oferecemos suporte individualizado para alunos com necessidades educacionais específicas.</p>
+                <p>Suporte individualizado para necessidades educacionais específicas.</p>
             </div>
             <div class="feature-item">
-                <!-- Ícone aqui -->
                 <h3>Equipa Qualificada</h3>
-                <p>Profissionais dedicados e experientes na área da educação inclusiva.</p>
+                <p>Profissionais experientes em educação inclusiva.</p>
             </div>
             <div class="feature-item">
-                <!-- Ícone aqui -->
-                <h3>Recursos e Materiais</h3>
-                <p>Disponibilizamos recursos pedagógicos adaptados e informações relevantes para pais e educadores.</p>
+                <h3>Recursos Adaptados</h3>
+                <p>Materiais pedagógicos e informações para pais e educadores.</p>
             </div>
         </section>
-
-        <!-- Outras seções podem ser adicionadas aqui, como últimas notícias ou eventos -->
-
     </main>
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes. Todos os direitos reservados.</p>
-            <p>Morada: Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA | Telefone: [Inserir Telefone Aqui] | Email: [Inserir Email Aqui]</p>
+            <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes.</p>
+            <p>Endereço: Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA</p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Menu Mobile
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
