@@ -40,6 +40,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            width: 100%;
         }
 
         .main-nav {
@@ -47,6 +48,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
+            position: relative;
         }
 
         .logo-img {
@@ -54,12 +56,14 @@
             width: auto;
         }
 
+        /* Menu Hamburguer - Corrigido para Chrome em tela dividida */
         .menu-toggle {
             display: none;
             background: none;
             border: none;
             cursor: pointer;
             padding: 10px;
+            z-index: 101;
         }
 
         .hamburger {
@@ -68,6 +72,7 @@
             height: 3px;
             background: var(--apple-gray-text);
             position: relative;
+            transition: transform 0.3s ease;
         }
 
         .hamburger::before, .hamburger::after {
@@ -77,10 +82,11 @@
             height: 100%;
             background: inherit;
             left: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .hamburger::before { top: -8px; }
-        .hamburger::after { bottom: -8px; }
+        .hamburger::before { top: -8px; transform-origin: left center; }
+        .hamburger::after { bottom: -8px; transform-origin: left center; }
 
         .nav-menu {
             display: flex;
@@ -96,13 +102,14 @@
             font-weight: 500;
             padding: 5px 0;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-menu li a:hover, .nav-menu li a.active {
             color: var(--apple-blue);
         }
 
-        /* === Hero Section (Mobile Otimizado) === */
+        /* === Hero Section === */
         .hero-section {
             text-align: center;
             padding: 60px 0;
@@ -132,9 +139,14 @@
             font-weight: 500;
             display: inline-block;
             min-width: 120px;
+            transition: background-color 0.3s;
         }
 
-        /* === Features Section (Grid Responsivo) === */
+        .hero-button:hover {
+            background-color: #0052a3;
+        }
+
+        /* === Features Section === */
         .features-section {
             padding: 40px 0;
             display: grid;
@@ -179,10 +191,12 @@
 
         /* === Media Queries (Mobile) === */
         @media (max-width: 767px) {
-            .menu-toggle { display: block; }
+            .menu-toggle {
+                display: block;
+            }
             .nav-menu {
                 display: none;
-                position: absolute;
+                position: fixed;
                 top: 80px;
                 left: 0;
                 width: 100%;
@@ -190,9 +204,27 @@
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
             }
-            .nav-menu.active { display: flex; }
-            .nav-menu li { margin: 10px 0; }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            /* Animação do hambúrguer */
+            .menu-toggle.active .hamburger {
+                transform: rotate(45deg);
+            }
+            .menu-toggle.active .hamburger::before {
+                transform: rotate(90deg) translateX(-8px);
+            }
+            .menu-toggle.active .hamburger::after {
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -233,7 +265,7 @@
                 <p>Suporte individualizado para necessidades educacionais específicas.</p>
             </div>
             <div class="feature-item">
-                <h3>Equipa Qualificada</h3>
+                <h3>Equipe Qualificada</h3>
                 <p>Profissionais experientes em educação inclusiva.</p>
             </div>
             <div class="feature-item">
@@ -247,23 +279,40 @@
         <div class="container">
             <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes.</p>
             <p>Endereço: Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA</p>
+            <p>Telefone: (75) 99999-9999 | Email: contato@centroaee.edu.br</p>
         </div>
     </footer>
 
     <script>
-        // Menu Mobile
+        // Menu Mobile - Corrigido para Chrome em tela dividida
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
 
         menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
+            
+            // Bloqueia/desbloqueia o scroll da página
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+        // Fechar menu ao clicar em um link ou fora do menu
+        document.addEventListener('click', (event) => {
+            const isClickInsideMenu = navMenu.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInsideMenu && navMenu.classList.contains('active')) {
+                menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
-            });
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Fechar menu ao redimensionar a tela (para casos de tela dividida)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767 && navMenu.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     </script>
 </body>
