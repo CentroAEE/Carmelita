@@ -1,0 +1,549 @@
+/* Estilos Gerais - Tema Apple */
+:root {
+    /* Cores baseadas na logo, mas com ajuste para tema Apple (mais clean) */
+    --apple-blue: #0071e3; /* Azul Apple */
+    --apple-gray-text: #1d1d1f; /* Texto principal escuro */
+    --apple-gray-text-light: #515154; /* Texto secundário */
+    --apple-background: #ffffff; /* Fundo branco */
+    --apple-background-alt: #f5f5f7; /* Fundo alternativo cinza claro */
+    --apple-border-color: #d2d2d7;
+
+    /* Cores da logo para acentos específicos, se necessário */
+    --logo-blue: #0056b3;
+    --logo-yellow: #ffc107;
+    --logo-red: #dc3545;
+    --logo-pink: #e83e8c;
+
+    /* Fontes - Inter é uma boa alternativa a San Francisco */
+    --font-family-apple: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-family-apple);
+    margin: 0;
+    padding: 0;
+    background-color: var(--apple-background);
+    color: var(--apple-gray-text);
+    line-height: 1.5; /* Ajuste para Apple */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 980px; /* Largura comum em Apple.com */
+    margin: 0 auto;
+    padding: 0 22px; /* Padding Apple */
+}
+
+/* Cabeçalho - Estilo Apple */
+.main-header {
+    background-color: rgba(255, 255, 255, 0.9); /* Branco translúcido */
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    color: var(--apple-gray-text);
+    padding: 0; /* Remover padding vertical */
+    box-shadow: none; /* Sem sombra por padrão */
+    border-bottom: 1px solid var(--apple-border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px; /* Altura ajustada */
+}
+
+.main-nav {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex; /* Para centralizar verticalmente se necessário */
+    align-items: center;
+    height: 100%;
+}
+
+.logo-img {
+    height: 50px; /* Logo Maior - Ajustado */
+    width: auto;
+    /* margin: -5px 0; */ /* Ajuste vertical removido/ajustado */
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-menu li {
+    margin-left: 25px; /* Espaçamento Apple */
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: var(--apple-gray-text);
+    text-decoration: none;
+    font-size: 13px; /* Tamanho Apple */
+    font-weight: 400;
+    transition: color 0.3s ease;
+    opacity: 0.9;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--apple-blue);
+    opacity: 1;
+}
+
+.login-button {
+    background-color: var(--apple-blue);
+    color: var(--apple-background);
+    padding: 7px 15px; /* Slightly increased padding */
+    border-radius: 999px; /* Pill shape */
+    font-size: 13px;
+    font-weight: 500; /* Slightly bolder */
+    transition: background-color 0.3s ease, opacity 0.3s ease; /* Added opacity transition */
+    margin-left: 15px;
+    line-height: 1; /* Ensure text is centered vertically */
+    opacity: 0.95; /* Slight opacity like other nav items */
+}
+
+.login-button:hover {
+    background-color: #0077ed;
+    color: var(--apple-background);
+    opacity: 1;
+}
+
+/* Menu Hambúrguer (Mobile) - Estilo Apple */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--apple-gray-text);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.hamburger {
+    display: block;
+    width: 18px; /* Mais fino */
+    height: 1px;
+    background-color: var(--apple-gray-text);
+    position: relative;
+    transition: background-color 0.1s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: 
+    ";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--apple-gray-text);
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.hamburger::before {
+    top: -5px;
+}
+
+.hamburger::after {
+    bottom: -5px;
+}
+
+/* Conteúdo Principal - Estilo Apple */
+.page-content {
+    padding: 50px 22px;
+}
+
+.page-content h1 {
+    color: var(--apple-gray-text);
+    font-size: 2.5rem; /* Tamanho maior */
+    font-weight: 600;
+    margin-bottom: 25px;
+    border-bottom: none; /* Sem borda */
+    padding-bottom: 0;
+    text-align: center; /* Centralizado */
+}
+
+.page-content > p:first-of-type {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--apple-gray-text-light);
+    margin-bottom: 40px;
+}
+
+/* Rodapé - Estilo Apple */
+.main-footer {
+    background-color: var(--apple-background-alt);
+    color: var(--apple-gray-text-light);
+    padding: 30px 0;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid var(--apple-border-color);
+}
+
+.main-footer p {
+    margin: 8px 0;
+}
+
+/* Estilos para Listagem de Posts (Notícias e Diário - Estrutura G1, Estilo Apple) */
+.posts-list-g1 {
+    margin-top: 40px;
+    max-width: 700px; /* Mais estreito para conteúdo */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-item-g1 {
+    background-color: var(--apple-background);
+    padding: 0; /* Sem padding interno direto */
+    margin-bottom: 40px;
+    border-radius: 0; /* Sem bordas arredondadas */
+    box-shadow: none; /* Sem sombra */
+    border-bottom: 1px solid var(--apple-border-color);
+    padding-bottom: 40px;
+}
+
+.post-item-g1:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.post-item-g1 .post-header {
+    margin-bottom: 10px;
+}
+
+.post-item-g1 h2 {
+    font-size: 1.5rem; /* Ajustado */
+    margin: 0 0 5px 0;
+    color: var(--apple-gray-text);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.post-item-g1 h2 a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.post-item-g1 h2 a:hover {
+    color: var(--apple-blue);
+}
+
+.post-item-g1 .post-meta {
+    font-size: 0.8rem;
+    color: var(--apple-gray-text-light);
+    margin-bottom: 15px;
+}
+
+.post-item-g1 .post-content-wrapper {
+    display: flex;
+    gap: 25px; /* Aumentar gap */
+}
+
+.post-item-g1 .post-image-link {
+    flex-shrink: 0;
+}
+
+.post-item-g1 .post-thumbnail {
+    width: 180px; /* Imagem maior */
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px; /* Leve arredondamento Apple */
+    display: block;
+    background-color: var(--apple-background-alt); /* Placeholder visual */
+}
+
+.post-item-g1 .post-excerpt {
+    font-size: 0.95rem;
+    color: var(--apple-gray-text);
+    margin-bottom: 15px;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.post-item-g1 .read-more {
+    color: var(--apple-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    align-self: flex-start;
+}
+
+.post-item-g1 .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para Formulários (Contato, Login, Painel) - Estilo Apple */
+.contact-form, .login-container, .admin-panel {
+    margin-top: 40px;
+    background-color: var(--apple-background-alt);
+    padding: 40px;
+    border-radius: 18px; /* Bordas Apple */
+    box-shadow: none;
+    border: 1px solid var(--apple-border-color);
+    max-width: 500px; /* Limitar largura */
+    margin-left: auto;
+    margin-right: auto;
+}
+.contact-form h2, .login-container h1, .admin-panel h1, .admin-panel h2 {
+    margin-bottom: 25px;
+    color: var(--apple-gray-text);
+    font-weight: 600;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--apple-gray-text-light);
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--apple-border-color);
+    border-radius: 12px; /* Bordas Apple */
+    font-family: var(--font-family-apple);
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: var(--apple-background);
+}
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.submit-button, .login-button-form, .admin-actions button, .admin-actions a {
+    background-color: var(--apple-blue);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px; /* Bordas Apple */
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.submit-button:hover, .login-button-form:hover, .admin-actions button:hover, .admin-actions a:hover {
+    background-color: #0077ed;
+}
+.login-button-form {
+     width: 100%;
+     padding: 12px 25px;
+     margin-top: 15px;
+}
+.contact-info {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--apple-gray-text-light);
+}
+.contact-info p {
+    margin-bottom: 8px;
+}
+.map-placeholder {
+    height: 350px;
+    background-color: var(--apple-background-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    margin-top: 30px;
+    border-radius: 18px;
+    border: 1px solid var(--apple-border-color);
+}
+.error-message {
+    color: var(--logo-red);
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Estilos Painel Admin - Apple */
+.admin-panel {
+     max-width: 800px;
+}
+.admin-section {
+    margin-bottom: 35px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid var(--apple-border-color);
+}
+.admin-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.admin-actions {
+    margin-bottom: 15px;
+}
+.admin-actions button, .admin-actions a {
+    padding: 8px 16px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+.admin-actions .edit-button {
+     background-color: #ff9500; /* Laranja Apple */
+}
+.admin-actions .edit-button:hover {
+     background-color: #ff9f0a;
+}
+ .admin-actions .delete-button {
+     background-color: #ff3b30; /* Vermelho Apple */
+}
+.admin-actions .delete-button:hover {
+     background-color: #ff453a;
+}
+.item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.item-list li {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--apple-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+ .item-list li:last-child {
+    border-bottom: none;
+}
+.item-list li span {
+    flex-grow: 1;
+    margin-right: 10px;
+    font-size: 0.95rem;
+}
+.admin-header-actions {
+    display: flex;
+    align-items: center;
+}
+.user-info {
+     margin-right: 15px;
+     font-weight: 400;
+     font-size: 13px;
+     color: var(--apple-gray-text-light);
+}
+#logout-button {
+    background-color: transparent;
+    color: var(--apple-blue);
+    padding: 6px 0;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+#logout-button:hover {
+    color: #0077ed;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    .main-header {
+        height: 48px;
+    }
+    .logo-img {
+        height: 48px; /* Ajustar logo no mobile */
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 48px; /* Altura do header mobile */
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 10px 0;
+        box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+        border-top: 1px solid var(--apple-border-color);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        margin: 0;
+        height: auto;
+        width: 100%;
+        border-bottom: 1px solid var(--apple-border-color);
+    }
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    .nav-menu a {
+        padding: 15px 20px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+    .login-button {
+        margin: 10px 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-toggle.active .hamburger {
+        background-color: transparent;
+    }
+
+    .menu-toggle.active .hamburger::before {
+        transform: translateY(5px) rotate(45deg);
+    }
+
+    .menu-toggle.active .hamburger::after {
+        transform: translateY(-5px) rotate(-45deg);
+    }
+
+    .page-content h1 {
+        font-size: 2rem;
+    }
+    .page-content > p:first-of-type {
+        font-size: 1rem;
+    }
+
+    .post-item-g1 .post-content-wrapper {
+        flex-direction: column;
+    }
+
+    .post-item-g1 .post-thumbnail {
+        width: 100%;
+        height: auto;
+        max-height: 220px;
+        margin-bottom: 15px;
+    }
+
+    .contact-form, .login-container, .admin-panel {
+        padding: 25px;
+    }
+}
+

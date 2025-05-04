@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário da Inclusão - AEE Carmelita Joana dos Santos Menezes</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav container">
+            <a href="../index.html" class="logo-link">
+                <img src="../images/logo.avif" alt="Logomarca AEE Carmelita Joana dos Santos Menezes" class="logo-img">
+            </a>
+            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="institucional.html">Institucional</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="pais_alunos.html">Pais e Alunos</a></li>
+                <li><a href="diario.html" class="active">Diário da Inclusão</a></li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="legislacao.html">Legislação</a></li>
+                <li><a href="contato.html">Contacto</a></li>
+                <!-- <li><a href="login.html" class="login-button">Entrar</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container page-content">
+        <h1>Diário da Inclusão</h1>
+        <p>Um espaço com dicas, reflexões, indicações culturais e materiais sobre educação inclusiva.</p>
+
+        <!-- Esta seção será preenchida dinamicamente pelo backend -->
+        <section class="posts-list-g1" id="diario-list">
+
+            <article class="post-item-g1">
+                <div class="post-header">
+                    <h2><a href="#">[Título do Post do Diário com Estilo Apple]</a></h2>
+                    <p class="post-meta">Por [Nome Autor] · DD/MM/AAAA HHhMM</p>
+                    <!-- Categoria pode ser adicionada aqui se desejado -->
+                    <!-- <p class="post-category" style="font-size:0.8rem; color:var(--apple-gray-text-light); margin-top:-10px; margin-bottom:15px;">Categoria: [Nome Categoria]</p> -->
+                </div>
+                <div class="post-content-wrapper">
+                    <a href="#" class="post-image-link">
+                        <img src="../images/placeholder.png" alt="Imagem do post 1" class="post-thumbnail"> <!-- Placeholder -->
+                    </a>
+                    <div class="post-excerpt">
+                        <p>[Excerto do conteúdo do post do diário adaptado ao novo estilo Apple, mantendo a estrutura G1...]</p>
+                        <a href="#" class="read-more">Leia mais</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="post-item-g1">
+                 <div class="post-header">
+                    <h2><a href="#">[Outro Título de Post do Diário]</a></h2>
+                     <p class="post-meta">Por [Nome Autor] · DD/MM/AAAA HHhMM</p>
+                </div>
+                <div class="post-content-wrapper">
+                    <!-- Sem imagem -->
+                    <div class="post-excerpt">
+                        <p>[Excerto do conteúdo do post sem imagem, com estilo Apple...]</p>
+                        <a href="#" class="read-more">Leia mais</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Mais posts do diário serão listados aqui via JS/Backend -->
+            <article class="post-item-g1">
+                 <div class="post-header">
+                    <h2><a href="#">[Título de Post Mais Longo Para Testar Quebra de Linha e Layout Geral]</a></h2>
+                     <p class="post-meta">Por [Nome Autor] · DD/MM/AAAA HHhMM · Atualizado há Y dias</p>
+                </div>
+                <div class="post-content-wrapper">
+                     <a href="#" class="post-image-link">
+                        <img src="../images/placeholder.png" alt="Imagem do post 3" class="post-thumbnail"> <!-- Placeholder -->
+                    </a>
+                    <div class="post-excerpt">
+                        <p>[Este é um excerto um pouco mais longo para verificar como o texto se comporta dentro do layout estilo Apple, garantindo que a leitura seja agradável e o espaçamento adequado. A estrutura G1 é mantida, mas a aparência segue a identidade visual Apple.]</p>
+                        <a href="#" class="read-more">Leia mais</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes. Todos os direitos reservados.</p>
+            <p>Morada: Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA | Telefone: [Inserir Telefone Aqui] | Email: [Inserir Email Aqui]</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <!-- Script específico para carregar posts do diário (fetch API) será adicionado aqui -->
+    <script>
+        // Exemplo básico de como carregar posts do diário (a ser implementado)
+        /*
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("/api/diario.php") // Ajustar URL da API
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data.length > 0) {
+                        const diarioList = document.getElementById("diario-list");
+                        diarioList.innerHTML = ""; // Limpa placeholders
+                        data.data.forEach(post => {
+                            const article = document.createElement("article");
+                            article.className = "post-item-g1";
+                            const dataFormatada = new Date(post.data_criacao).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+                            const imagemHTML = post.imagem_path ?
+                                `<a href="#" class="post-image-link"><img src="../${post.imagem_path}" alt="${post.titulo}" class="post-thumbnail"></a>` : "";
+
+                            article.innerHTML = `
+                                <div class="post-header">
+                                    <h2><a href="#">${post.titulo}</a></h2>
+                                    <p class="post-meta">Por ${post.nome_autor} · ${dataFormatada}</p>
+                                    ${post.categoria ? `<p style="font-size:0.8rem; color:var(--apple-gray-text-light); margin-top:-10px; margin-bottom:15px;">Categoria: ${post.categoria}</p>` : ""}
+                                </div>
+                                <div class="post-content-wrapper">
+                                    ${imagemHTML}
+                                    <div class="post-excerpt">
+                                        <p>${post.excerto}...</p>
+                                        <a href="#" class="read-more">Leia mais</a>
+                                    </div>
+                                </div>
+                            `;
+                            diarioList.appendChild(article);
+                        });
+                    } else {
+                        document.getElementById("diario-list").innerHTML = "<p style=\"text-align:center; color:var(--apple-gray-text-light);\">Nenhum post encontrado no diário.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao carregar posts do diário:", error);
+                    document.getElementById("diario-list").innerHTML = "<p style=\"text-align:center; color:var(--logo-red);\">Erro ao carregar posts do diário.</p>";
+                });
+        });
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias - AEE Carmelita Joana dos Santos Menezes</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav container">
+            <a href="../index.html" class="logo-link">
+                <img src="../images/logo.avif" alt="Logomarca AEE Carmelita Joana dos Santos Menezes" class="logo-img">
+            </a>
+            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="institucional.html">Institucional</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="pais_alunos.html">Pais e Alunos</a></li>
+                <li><a href="diario.html">Diário da Inclusão</a></li>
+                <li><a href="noticias.html" class="active">Notícias</a></li>
+                <li><a href="legislacao.html">Legislação</a></li>
+                <li><a href="contato.html">Contacto</a></li>
+                <!-- <li><a href="login.html" class="login-button">Entrar</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container page-content">
+        <h1>Notícias</h1>
+        <p>Acompanhe as últimas novidades e eventos do Centro AEE.</p>
+
+        <!-- Esta seção será preenchida dinamicamente pelo backend -->
+        <section class="posts-list-g1" id="news-list">
+
+            <article class="post-item-g1">
+                <div class="post-header">
+                    <h2><a href="#">[Título da Notícia 1 com Estilo Apple]</a></h2>
+                    <p class="post-meta">Por [Nome Autor] · DD/MM/AAAA HHhMM · Atualizado há X horas</p>
+                </div>
+                <div class="post-content-wrapper">
+                    <a href="#" class="post-image-link">
+                        <!-- Imagem será inserida dinamicamente -->
+                        <img src="../images/placeholder.png" alt="Imagem da notícia 1" class="post-thumbnail"> <!-- Placeholder -->
+                    </a>
+                    <div class="post-excerpt">
+                        <p>[Excerto do conteúdo da notícia adaptado ao novo estilo Apple, mantendo a estrutura G1. Este texto deve ser um resumo conciso do artigo principal...]</p>
+                        <a href="#" class="read-more">Leia mais</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="post-item-g1">
+                 <div class="post-header">
+                    <h2><a href="#">[Outro Título de Notícia Seguindo o Padrão Apple]</a></h2>
+                    <p class="post-meta">Por [Nome Autor] · DD/MM/AAAA HHhMM</p>
+                </div>
+                <div class="post-content-wrapper">
+                    <!-- Sem imagem neste exemplo -->
+                    <div class="post-excerpt">
+                        <p>[Excerto do conteúdo da notícia sem imagem. O layout se ajusta automaticamente, com estilo Apple...]</p>
+                        <a href="#" class="read-more">Leia mais</a>
+                    </div>
+                </div>
+            </article>
+
+             <article class="post-item-g1">
+                 <div class="post-header">
+                    <h2><a href="#">[Notícia com Título Mais Longo Para Testar Layout e Quebras de Linha no Estilo Apple]</a></h2>
+                    <p class="post-meta">Por [Nome Autor] · DD/MM/AAAA HHhMM</p>
+                </div>
+                <div class="post-content-wrapper">
+                     <a href="#" class="post-image-link">
+                        <img src="../images/placeholder.png" alt="Imagem da notícia 3" class="post-thumbnail"> <!-- Placeholder -->
+                    </a>
+                    <div class="post-excerpt">
+                        <p>[Mais um exemplo de excerto para garantir que o visual Apple se mantém consistente mesmo com diferentes quantidades de texto e presença ou ausência de imagem, sempre usando a estrutura G1.]</p>
+                        <a href="#" class="read-more">Leia mais</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Mais notícias serão listadas aqui via JS/Backend -->
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes. Todos os direitos reservados.</p>
+            <p>Morada: Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA | Telefone: [Inserir Telefone Aqui] | Email: [Inserir Email Aqui]</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <!-- Script específico para carregar notícias (fetch API) será adicionado aqui -->
+    <script>
+        // Exemplo básico de como carregar notícias (a ser implementado)
+        /*
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("/api/publicacoes.php?status=aprovado") // Ajustar URL da API e adicionar filtro
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data.length > 0) {
+                        const newsList = document.getElementById("news-list");
+                        newsList.innerHTML = ""; // Limpa placeholders
+                        data.data.forEach(post => {
+                            const article = document.createElement("article");
+                            article.className = "post-item-g1";
+                            const dataFormatada = new Date(post.data_criacao).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+                            const imagemHTML = post.imagem_path ?
+                                `<a href="#" class="post-image-link"><img src="../${post.imagem_path}" alt="${post.titulo}" class="post-thumbnail"></a>` : "";
+
+                            article.innerHTML = `
+                                <div class="post-header">
+                                    <h2><a href="#">${post.titulo}</a></h2>
+                                    <p class="post-meta">Por ${post.nome_autor} · ${dataFormatada}</p>
+                                </div>
+                                <div class="post-content-wrapper">
+                                    ${imagemHTML}
+                                    <div class="post-excerpt">
+                                        <p>${post.excerto}...</p>
+                                        <a href="#" class="read-more">Leia mais</a>
+                                    </div>
+                                </div>
+                            `;
+                            newsList.appendChild(article);
+                        });
+                    } else {
+                        document.getElementById("news-list").innerHTML = "<p style=\"text-align:center; color:var(--apple-gray-text-light);\">Nenhuma notícia encontrada.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao carregar notícias:", error);
+                    document.getElementById("news-list").innerHTML = "<p style=\"text-align:center; color:var(--logo-red);\">Erro ao carregar notícias.</p>";
+                });
+        });
+        */
+    </script>
+</body>
+</html>

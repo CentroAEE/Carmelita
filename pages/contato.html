@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - AEE Carmelita Joana dos Santos Menezes</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav container">
+            <a href="../index.html" class="logo-link">
+                <img src="../images/logo.avif" alt="Logomarca AEE Carmelita Joana dos Santos Menezes" class="logo-img">
+            </a>
+            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="institucional.html">Institucional</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="pais_alunos.html">Pais e Alunos</a></li>
+                <li><a href="diario.html">Diário da Inclusão</a></li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="legislacao.html">Legislação</a></li>
+                <li><a href="contato.html" class="active">Contacto</a></li>
+                <li><a href="login.html" class="login-button">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container page-content">
+        <h1>Contacto</h1>
+        <p>Entre em contacto connosco para mais informações, dúvidas ou sugestões.</p>
+
+        <section class="contact-form">
+            <h2>Envie uma Mensagem</h2>
+            <!-- O formulário aqui é apenas visual. A funcionalidade de envio requer backend (PHP ou outra solução) -->
+            <form id="contact-form-element" action="#" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone (Opcional)</label>
+                    <input type="tel" id="telefone" name="telefone">
+                </div>
+                <div class="form-group">
+                    <label for="assunto">Assunto</label>
+                    <input type="text" id="assunto" name="assunto" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar Mensagem</button>
+                <p id="form-status" class="error-message" style="margin-top: 15px; text-align: center;"></p>
+            </form>
+        </section>
+
+        <section class="contact-info">
+            <h2>Outras Formas de Contacto</h2>
+            <p><strong>Morada:</strong> Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA</p>
+            <p><strong>Telefone:</strong> [Inserir Telefone Aqui]</p>
+            <p><strong>Email:</strong> [Inserir Email Aqui]</p>
+            <p><strong>Horário de Atendimento:</strong> [Inserir Horário Aqui]</p>
+            <!-- Adicionar links para redes sociais se houver -->
+        </section>
+
+        <section class="map-placeholder">
+            <span>[Mapa com a localização do Centro AEE]</span>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes. Todos os direitos reservados.</p>
+            <p>Morada: Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA | Telefone: [Inserir Telefone Aqui] | Email: [Inserir Email Aqui]</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Script básico para feedback visual do formulário (não envia dados)
+        /*
+        const contactForm = document.getElementById('contact-form-element');
+        const formStatus = document.getElementById('form-status');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Impede o envio real do formulário
+                formStatus.textContent = 'Enviando... (Funcionalidade de envio requer backend)';
+                formStatus.style.color = 'var(--apple-blue)';
+
+                // Simula um tempo de envio e dá feedback
+                setTimeout(() => {
+                     // Aqui seria a lógica de fetch para a API PHP
+                     // Ex: fetch('/api/contato.php', { method: 'POST', body: new FormData(contactForm) })
+                     //     .then(response => response.json())
+                     //     .then(data => { ... })
+
+                    formStatus.textContent = 'Mensagem (simulação) enviada com sucesso! Entraremos em contacto em breve.';
+                    formStatus.style.color = 'green';
+                    contactForm.reset(); // Limpa o formulário
+                }, 1500);
+            });
+        }
+        */
+    </script>
+</body>
+</html>

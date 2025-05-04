@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEE Carmelita Joana dos Santos Menezes - Início</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para a página inicial - Tema Apple */
+        .hero-section {
+            text-align: center;
+            padding: 80px 0;
+            background-color: var(--apple-background-alt);
+            border-bottom: 1px solid var(--apple-border-color);
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--apple-gray-text);
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            color: var(--apple-gray-text-light);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        .hero-button {
+            background-color: var(--apple-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .hero-button:hover {
+            background-color: #0077ed;
+        }
+        .features-section {
+            padding: 60px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .feature-item {
+            padding: 20px;
+        }
+        .feature-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--apple-gray-text);
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: var(--apple-gray-text-light);
+        }
+        /* Ícones podem ser adicionados aqui */
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-nav container">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.avif" alt="Logomarca AEE Carmelita Joana dos Santos Menezes" class="logo-img">
+            </a>
+            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="pages/institucional.html">Institucional</a></li>
+                <li><a href="pages/servicos.html">Serviços</a></li>
+                <li><a href="pages/pais_alunos.html">Pais e Alunos</a></li>
+                <li><a href="pages/diario.html">Diário da Inclusão</a></li>
+                <li><a href="pages/noticias.html">Notícias</a></li>
+                <li><a href="pages/legislacao.html">Legislação</a></li>
+                <li><a href="pages/contato.html">Contacto</a></li>
+                <!-- <li><a href="pages/login.html" class="login-button">Entrar</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Bem-vindo ao Centro AEE</h1>
+                <p>Promovendo a inclusão e o desenvolvimento educacional especializado em Cícero Dantas/BA.</p>
+                <a href="pages/institucional.html" class="hero-button">Saiba Mais Sobre Nós</a>
+            </div>
+        </section>
+
+        <section class="features-section container">
+            <div class="feature-item">
+                <!-- Ícone aqui -->
+                <h3>Atendimento Especializado</h3>
+                <p>Oferecemos suporte individualizado para alunos com necessidades educacionais específicas.</p>
+            </div>
+            <div class="feature-item">
+                <!-- Ícone aqui -->
+                <h3>Equipa Qualificada</h3>
+                <p>Profissionais dedicados e experientes na área da educação inclusiva.</p>
+            </div>
+            <div class="feature-item">
+                <!-- Ícone aqui -->
+                <h3>Recursos e Materiais</h3>
+                <p>Disponibilizamos recursos pedagógicos adaptados e informações relevantes para pais e educadores.</p>
+            </div>
+        </section>
+
+        <!-- Outras seções podem ser adicionadas aqui, como últimas notícias ou eventos -->
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Centro de Referência para AEE Carmelita Joana dos Santos Menezes. Todos os direitos reservados.</p>
+            <p>Morada: Anexo do Colégio Monsenhor Galvão – Cícero Dantas/BA | Telefone: [Inserir Telefone Aqui] | Email: [Inserir Email Aqui]</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
